@@ -1,0 +1,570 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,500;1,8..144,500&display=swap");
+body {
+  background-color: EFF1F3;
+}
+
+.nav-bg {
+  background-color: #223843 !important;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  width: 14rem;
+  height: auto;
+  margin: 3rem 0 0 3rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 96px;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  background-color: #d8b4a0;
+  width: 95vw;
+  padding: 20px 0;
+  gap: 30px;
+  border-radius: 5px;
+}
+
+.hero-text {
+  width: 40%;
+}
+
+.hero-img-container {
+  width: 40%;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.text-color {
+  background-color: #d1d1d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 10px 0;
+}
+
+.font-m {
+  font-size: 14px !important;
+}
+
+h3,
+h4 {
+  font-size: 19px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0px 0px 1.2rem;
+}
+
+.nav-links {
+  text-decoration: none;
+}
+
+.btn-color {
+  background-color: #d77a61 !important;
+  border: none;
+  display: inline-block;
+  margin-left: auto;
+  box-sizing: border-box;
+  width: 150px;
+}
+
+.btn-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.courseDes-Container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
+}
+
+.CourseDescription {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+  background-color: #d8b4a0;
+  width: 95vw;
+  height: 90%;
+  padding: 30px;
+  position: relative;
+  gap: 30px;
+  border-radius: 5px;
+}
+
+.courseDes-img-container {
+  width: 30%;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.courseDes-text {
+  width: 55%;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.courseDes-img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.courseContent-container {
+  width: 81.5rem;
+  margin-bottom: 28px;
+  margin-left: 50px;
+}
+
+.progressBar-style {
+  width: 25%;
+  background-color: #223843;
+}
+
+.progress-width {
+  width: 100%;
+}
+
+.progressContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+  margin-bottom: 30px;
+}
+
+.progressContainer > .progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.class-header-style {
+  background-color: #223843 !important;
+}
+
+.bgcolor {
+  background-color: #d8b4a0;
+}
+
+/*  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #eee;
+}
+
+.syllabusFaq {
+  width: 100%;
+  max-width: 1150px !important;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 15px;
+  background: #223843;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* border-radius: 10px; */
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.faqs {
+  width: 100%;
+  max-width: 1450px !important;
+  margin: 0 auto;
+  /* padding: 15px; */
+}
+
+.faqs .faq {
+  /* margin: 15px; */
+  padding: 15px;
+  background: #fff;
+  /* border-radius: 10px; */
+  border-bottom: 1.5px solid #eee;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.faqs .faq .faq-question {
+  position: relative;
+  font-size: 20px;
+  padding-right: 80px;
+  transition: all 0.4s ease;
+}
+
+.faqs .faq .faq-question::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease;
+}
+
+.faqs .faq .faq-answer {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faqs .faq.open .faq-question {
+  margin-bottom: 15px;
+}
+
+.faqs .faq.open .faq-question::after {
+  content: "-";
+}
+
+.faqs .faq.open .faq-answer {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.CourseSyllabus {
+  margin-top: 15px;
+}
+
+.faq:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.courseDashboardCard {
+  height: 20rem;
+}
+
+/* Forms Styling*/
+
+.formcontainer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select,
+input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #223843 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease !important;
+}
+
+button:hover {
+  background-color: #d77a61;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.courseDashboardCard {
+  margin: auto;
+}
+
+.EditSyllabus {
+  /* background-color: #223843;
+  color: #fff;
+  border: none;
+  padding: 10px 20px; */
+  border-radius: 5px;
+  /* cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease; */
+}
+
+.DeleteSyllabus {
+  margin-left: 10px;
+}
+
+.SaveSyllabus {
+  margin-bottom: 10px;
+}
+
+.AddContent {
+  display: inline-block;
+  margin-bottom: 20px !important;
+}
+
+.login-container {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-title {
+  font-family: "Roboto Serif", serif;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.DeleteVideo {
+  margin-left: 10px;
+}
+
+/* QuizManagement.css */
+
+.quiz-management {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.new-quiz {
+  margin-bottom: 20px;
+}
+
+.new-quiz input {
+  width: 60%;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.new-quiz label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.quiz {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quiz button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* ChatPage Styling */
+
+.msgContainer {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 230px;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.msgheading {
+  margin-bottom: 30px;
+}
+
+.msgInput {
+  margin-bottom: 30px;
+}
+
+.msgInputfile {
+  margin-left: 20px;
+}
+
+.msgSendButton {
+  margin-left: 270px;
+}
+
+.delete-button {
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+/* ----------------------------------------- */
+
+/* user profile styling */
+
+.UserProfileContainer {
+  margin-left: -35px;
+}
+
+.videoQuizContainer {
+  margin: 70px;
+  margin-bottom: 70px;
+}
+
+.category_course_dis {
+  margin-bottom: 40px;
+}
+
+.CategorycourseDes-img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.CategorycourseDes-img-container {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.fixed-size {
+  width: 160px;
+  height: 43px;
+  padding: 5px;
+}
+
+.buttn {
+  background-color: #223843;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+buttn:hover {
+  background-color: #d77a61;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.bttn {
+  background-color: #223843;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 9px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.bttn:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.faq-section {
+  padding: 20px; /* Adjust the padding as needed */
+  padding-bottom: 30px;
+}
+.faq-heading {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.faq-card {
+  border: 1px solid #ccc; /* Example border for each card */
+  margin-bottom: 10px; /* Adjust the space between cards */
+  padding: 10px; /* Adjust the padding inside each card */
+}
+
+.question {
+  cursor: pointer;
+  padding-left: 20px; /* Adjust the padding in front of the question */
+}
+
+.answer {
+  padding: 10px 0; /* Adjust the padding above and below the answer */
+  padding-left: 20px;
+}
+
+.syllabusContent {
+  margin: 10px;
+}
+
+.loginbtn {
+  width: 85px;
+  height: 45px;
+}
+
+.coursedashboardcard {
+  height: 40px;
+}
+
+.coursedashboardcardplus {
+  height: 55px;
+}
