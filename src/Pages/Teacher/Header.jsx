@@ -16,7 +16,7 @@ function Header() {
   console.log("Local Storage after logout:", localStorage);
   Cookies.remove("csrftoken");
   console.log("Cookies after logout:", document.cookie);
-  navigate("/Login");
+  navigate("/");
   // window.location.reload(); 
 }
   return (
