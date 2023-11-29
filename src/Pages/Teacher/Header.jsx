@@ -17,7 +17,7 @@ function Header() {
   Cookies.remove("csrftoken");
   console.log("Cookies after logout:", document.cookie);
   navigate("/Login");
-  window.location.reload(); 
+  // window.location.reload(); 
 }
   return (
     <nav className="navbar navbar-expand-lg navbar nav-bg">
