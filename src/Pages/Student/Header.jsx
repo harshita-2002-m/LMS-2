@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Login from "../../Login/Login";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -11,7 +12,7 @@ function Header() {
     localStorage.removeItem("userType");
 
     // Redirect to the login page
-    navigate("/Login");
+    navigate("/");
   }
 
   return (
