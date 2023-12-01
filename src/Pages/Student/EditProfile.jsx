@@ -31,19 +31,19 @@ export default function EditProfile() {
     dob: "",
     address: "",
   });
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const storedStudentId = JSON.parse(localStorage.getItem("studentId"));
         console.log(storedStudentId);
-
+ 
         if (storedStudentId) {
           // Fetch data from API using the ID from local storage
           const response = await axios.get(
             `${baseUrl}/student/${storedStudentId}/`
           );
-
+ 
           // Check if the fetched ID matches the one from local storage
           if (response.data.id == storedStudentId) {
             setStudentData([response.data]);
@@ -66,10 +66,10 @@ export default function EditProfile() {
         console.error("Error fetching student data:", error);
       }
     };
-
+ 
     fetchData();
   }, []);
-
+ 
   const handleInputChange = (e) => {
     if (e.target.id == "profilePicture") {
       // Handle file input separately
@@ -84,7 +84,7 @@ export default function EditProfile() {
       });
     }
   };
-
+ 
   const handleSaveChanges = async () => {
     try {
       const storedStudentId = JSON.parse(localStorage.getItem("studentId"));
@@ -96,12 +96,12 @@ export default function EditProfile() {
         form.append("contactNumber", formData.contactNumber);
         form.append("dob", formData.dob);
         form.append("address", formData.address);
-
+ 
         // Conditionally append profile picture only if it exists
         if (formData.profilePicture instanceof File) {
           form.append("profilePicture", formData.profilePicture);
         }
-
+ 
         const res = await axios.put(
           `${baseUrl}/student/${storedStudentId}/`,
           form,
@@ -111,12 +111,12 @@ export default function EditProfile() {
             },
           }
         );
-
+ 
         setFormData({
           ...formData,
           profilePicture: res.data.profilePicture,
         });
-
+ 
         console.log("Student data updated successfully");
       } else {
         console.error("No student ID in local storage");
@@ -125,7 +125,7 @@ export default function EditProfile() {
       console.error("Error updating student data:", error);
     }
   };
-
+ 
   return (
     <section style={{ backgroundColor: "#eee" }}>
       {studentData.map((student) => (
@@ -143,9 +143,9 @@ export default function EditProfile() {
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
-
+ 
           <MDBRow>
-            <MDBCol lg="4">
+            <MDBCol lg="3">
               <MDBCard className="mb-4">
                 <MDBCardBody className="text-center">
                   <MDBCardImage
@@ -155,7 +155,7 @@ export default function EditProfile() {
                     style={{ width: "150px" }}
                     fluid
                   />
-
+ 
                   <div className="d-flex justify-content-center mb-2"></div>
                   <div class="media-body ml-4">
                     <label class="form-label" for="customFile">
@@ -171,7 +171,7 @@ export default function EditProfile() {
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>
-
+ 
             <MDBCol lg="8">
               <MDBCard className="mb-4" style={{ width: "100%" }}>
                 <MDBCardBody>
@@ -229,7 +229,7 @@ export default function EditProfile() {
                     </MDBCol>
                   </MDBRow>
                   <hr />
-
+ 
                   <MDBRow>
                     <MDBCol sm="3">
                       <MDBCardText>Phone</MDBCardText>
@@ -286,11 +286,11 @@ export default function EditProfile() {
                   </MDBRow>
                 </MDBCardBody>
               </MDBCard>
-
+ 
               <MDBRow>
                 <MDBRow>
                   <MDBCol>
-                    <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
+                    <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4 savechangediv">
                       <MDBBreadcrumbItem>
                         <button
                           type="button"
