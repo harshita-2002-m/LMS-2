@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 function Syllabus({ faq, index, toggleFAQ, toggleEdit, handleEdit }) {
   const [editedContent, setEditedContent] = useState(faq.answer);
