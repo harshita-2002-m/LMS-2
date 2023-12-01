@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function AddStudents() {
   const [studentData, setStudentData] = useState([]);
   const [options, setOptions] = useState([]);
   const [selectedStudents, setSelectedStudents] = useState([]);
   const [successMessage, setSuccessMessage] = useState(null);
   const { id } = useParams();
-
+ 
   useEffect(() => {
     axios
       .get(baseUrl + "/student/")
@@ -28,16 +28,16 @@ function AddStudents() {
         console.error(error);
       });
   }, []);
-
+ 
   const handleAddStudents = () => {
     const studentIds = selectedStudents.map((student) => student.value);
-
+ 
     const apiUrl = `${baseUrl}/add_students_to_course/`;
     const requestBody = {
       course_id: id,
       student_ids: studentIds,
     };
-
+ 
     axios
       .post(apiUrl, requestBody)
       .then((response) => {
@@ -51,7 +51,7 @@ function AddStudents() {
         // Handle errors appropriately.
       });
   };
-
+ 
   return (
     <div className="formcontainer">
       <div>
@@ -68,5 +68,5 @@ function AddStudents() {
     </div>
   );
 }
-
+ 
 export default AddStudents;
