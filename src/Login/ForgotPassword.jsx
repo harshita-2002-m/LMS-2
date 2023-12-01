@@ -2,35 +2,35 @@ import { useState } from "react";
 import axios from "axios";
 import React from "react";
 //import {Link} from 'react-router-dom';
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function ForgotPassword() {
   // const navigate=useNavigate();
   const [email, setEmail] = useState({
     email: "",
   });
-
+ 
   const [errorMsg, seterrorMsg] = useState("");
   const [successMsg, setsuccessMsg] = useState("");
-
+ 
   const handleChange = (event) => {
     setEmail({
       ...email,
       [event.target.name]: event.target.value,
     });
   };
-
+ 
   const submitForm = () => {
     setsuccessMsg("");
     seterrorMsg("");
-
+ 
     const formData = new FormData();
     formData.append("email", email.email);
-
+ 
     //axios.post(baseUrl+'/login/', formData)
     axios
-      .post(baseUrl + "/forgot-password/", formData)
+      .post(baseUrl + "/forget-password/", formData)
       .then((res) => {
         if (res.data.user_type === "instructor") {
           setsuccessMsg("success");
@@ -44,7 +44,7 @@ function ForgotPassword() {
         console.log(error);
       });
   };
-
+ 
   return (
     // Your login form JSX remains the same
     <div className=" card-body col-5 offset-5">
@@ -67,7 +67,7 @@ function ForgotPassword() {
               placeholder="Enter email"
             />
           </div>
-
+ 
           <div className="form-group">
             <button
               type="button"
