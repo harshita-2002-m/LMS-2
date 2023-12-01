@@ -4,21 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function CourseDescription(props) {
   const [buttonText, setButtonText] = useState("Add Content");
-
+ 
   // Define the functionality for the button here
   const handleButtonClick = () => {
     // For example, you can update state, make an API call, etc.
     console.log("Button clicked");
   };
-
+ 
   let { id } = useParams();
   console.log({ id });
-
+ 
   const [courseData, setCourseData] = useState([]);
-
+ 
   useEffect(() => {
     try {
       axios.get(baseUrl + "/detail/" + id).then((res) => {
@@ -29,7 +29,7 @@ function CourseDescription(props) {
     }
   }, [id]);
   console.log(courseData);
-
+ 
   const [instructorData, setinstructorData] = useState([]);
   useEffect(() => {
     try {
@@ -40,13 +40,13 @@ function CourseDescription(props) {
       console.log(error);
     }
   }, []);
-
+ 
   const navigate = useNavigate();
-
+ 
   // const handleEnrollButtonClick = () => {
   //   // Redirect to the "Teacher/AllStudents" page
   //   //  navigate('/Teacher/AddStudents/${id}');
-
+ 
   //console.log(instructorData);
   // Use the list of instructors provided as a prop
   const getInstructorName = (instructorId) => {
@@ -54,12 +54,12 @@ function CourseDescription(props) {
     const instructor = instructorData.find(
       (instructor) => instructor.id === instructorId
     );
-
+ 
     return instructor
       ? `${instructor.firstName} ${instructor.lastName}`
       : "Unknown Instructor";
   };
-
+ 
   return (
     <div className="container mt-4 courseDes-Container">
       <div className="CourseDescription">
@@ -73,7 +73,7 @@ function CourseDescription(props) {
             <div key={course.id}>
               <h3>{course.courseName}</h3>
               <p style={{ width: "80%" }}>{course.description}</p>
-
+ 
               <p className="fw-bold">
                 Created By :
                 <a
@@ -83,12 +83,12 @@ function CourseDescription(props) {
                   {getInstructorName(course.fk_instructor)}
                 </a>
               </p>
-
+ 
               <p className="fw-bold">Start Date : {course.startDate}</p>
               <p className="fw-bold">End Date : {course.endDate}</p>
             </div>
           ))}
-
+ 
           {/* <p className="fw-bold"><a href="/AllStudents" className="text-decoration-none text-dark">Total Students : 100</a></p> */}
           <p className="fw-bold">
             <Link
@@ -106,13 +106,13 @@ function CourseDescription(props) {
               </Link>{" "}
             </button>
           </p>
-
+ 
           <button
             style={{
               position: "absolute",
-
+ 
               top: "10px", // Adjust the top position as needed
-
+ 
               right: "10px", // Adjust the right position as needed
             }}
             onClick={handleButtonClick}
@@ -131,5 +131,5 @@ function CourseDescription(props) {
     </div>
   );
 }
-
+ 
 export default CourseDescription;
