@@ -1,50 +1,119 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Card from "./Card";
-
-function OngoingCourses() {
-  const [ongoingCourses, setOngoingCourses] = useState([]);
-
+ 
+const baseUrl = "https://danville.pythonanywhere.com/api";
+ 
+function OngoingCourse() {
+  const data = [
+    // Your course data here
+    // ...
+  ];
+ 
+  const [courseData, setCourseData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [instructorId, setInstructorId] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+ 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://danville.pythonanywhere.com/api/course/");
-        const courses = await response.json();
-
-        const currentDate = new Date();
-
-        // Filter ongoing courses based on the current date
-        const ongoing = courses.filter(
-          (course) => currentDate >= new Date(course.startDate) && currentDate <= new Date(course.endDate)
-        );
-
-        // Sort ongoing courses alphabetically by courseName
-        const sortedOngoing = ongoing.sort((a, b) => a.courseName.localeCompare(b.courseName));
-
-        setOngoingCourses(sortedOngoing);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    // Fetching instructor id from local storage
+    const storedInstructorId = localStorage.getItem("instructorId");
+    console.log(storedInstructorId);
+ 
+    if (storedInstructorId) {
+      setInstructorId(storedInstructorId);
+ 
+      axios
+        .get(baseUrl + "/course/")
+        .then((res) => {
+          // Comparing instructor id from local storage with the fk_instructor from the course
+          const coursesForInstructor = res.data.filter(
+            (course) => course.fk_instructor == storedInstructorId
+          );
+          // Filter courses where the end date is greater than the current date
+          const currentDate = new Date();
+          const ongoingCourses = coursesForInstructor.filter(
+            (course) => currentDate <= new Date(course.endDate)
+          );
+          setCourseData(ongoingCourses);
+          setFilteredData(ongoingCourses);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setLoading(false);
+        });
+    }
   }, []);
-
+ 
+  const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      setError("Search term is empty or contains only whitespace.");
+      setFilteredData(courseData); // Restore ongoing courses
+      return;
+    }
+ 
+    const filtered = courseData.filter((course) =>
+      course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+ 
+    if (filtered.length === 0) {
+      setError("No courses found.");
+    } else {
+      setError(null);
+      setFilteredData(filtered);
+    }
+  };
+ 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+ 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+ 
   return (
-    <div>
-      <h2 className="heading-margin">Ongoing Courses</h2>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      className="searchBar"
+    >
+      <div
+        className="search-bar"
+        style={{ marginTop: "35px", marginBottom: "10px", display: "flex" }}
+      >
+        <input
+          type="text"
+          placeholder="Search Courses"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ width: "850px" }}
+        />
+        <button onClick={handleSearch} style={{ marginLeft: "10px" }}>
+          Search
+        </button>
+      </div>
       <div className="d-flex flex-wrap">
-        {ongoingCourses.map((course) => (
-          <Card
-            key={course.id}
-            id={course.id}
-            img="https://source.unsplash.com/1800x900/?book" // Update this with the actual image property
-            title={course.courseName}
-            desc={course.description}
-          />
-        ))}
+        {filteredData.length === 0 ? (
+          <p>No courses found.</p>
+        ) : (
+          filteredData.map((course) => (
+            <Card
+              key={course.id}
+              id={course.id}
+              img={
+                course.img || "https://source.unsplash.com/1800x900/?course&3"
+              }
+              title={course.courseName}
+              desc={course.description}
+            />
+          ))
+        )}
       </div>
     </div>
   );
 }
-
-export default OngoingCourses;
+ 
+export default OngoingCourse;
