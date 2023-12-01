@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 const Faq = () => {
   const [faqs, setFAQs] = useState([]);
-
+ 
   useEffect(() => {
     // Fetch FAQs from the backend API endpoint
     axios
@@ -18,19 +18,19 @@ const Faq = () => {
         console.error("Error fetching FAQs:", error);
       });
   }, []);
-
+ 
   const [expandedId, setExpandedId] = useState(null);
-
+ 
   const toggleAnswer = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
-
+ 
   return (
     <div className="faq-section">
       <div className="faq-heading">
         <h2>Frequently Asked Questions (FAQs)</h2>
       </div>
-
+ 
       <div className="faq-cards">
         {faqs.map((faq) => (
           <div
