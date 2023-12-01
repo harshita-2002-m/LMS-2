@@ -7,7 +7,7 @@
 //       <div className="card-body">
 //         <h5 className="card-title">{props.title}</h5>
 //         <p className="card-text">{props.desc}</p>
-//         <Link to={`/Teacher/detail/${props.id}`} className="btn btn-primary btn-color">
+//         <Link to={`/Teacher/detail/${props.id}`} className="btn btn-primary btn-color knowMorebtn">
 //           Know More &rarr;
 //         </Link>
 //       </div>
@@ -58,7 +58,7 @@ function Card(props) {
         {!isHovered && (
           <p className="card-text description-hidden">{truncateDescription(props.desc)}</p>
         )}
-        <Link to={`/Teacher/detail/${props.id}`} className="btn btn-primary btn-color">
+        <Link to={`/Teacher/detail/${props.id}`} className="btn btn-primary btn-color knowMorebtn">
           Know More &rarr;
         </Link>
 
