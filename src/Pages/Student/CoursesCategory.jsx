@@ -3,19 +3,19 @@ import axios from "axios";
 import React from "react";
 import Card from "./Card";
 import { useParams } from "react-router-dom";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 // ... (other imports and constants)
-
+ 
 function CoursesCategory(params) {
   let { categoryId } = useParams();
-
+ 
   const [courseData, setCourseData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [storedStudentId, setStoredStudentId] = useState(null);
-
+ 
   useEffect(() => {
     const fetchStudentId = () => {
       const storedId = localStorage.getItem("studentId");
@@ -23,10 +23,10 @@ function CoursesCategory(params) {
       // Parse to integer if storedId is expected to be a number
       setStoredStudentId(parseInt(storedId, 10));
     };
-
+ 
     fetchStudentId();
   }, []);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +35,7 @@ function CoursesCategory(params) {
         const enrolledCoursesData = enrollmentResponse.data
           .filter((enrollment) => enrollment.fk_student === storedStudentId)
           .map((enrollment) => enrollment.fk_course);
-
+ 
         // Fetch courses for the specific category
         const coursesResponse = await axios.get(
           baseUrl + "/category-courses/" + categoryId
@@ -43,7 +43,7 @@ function CoursesCategory(params) {
         const coursesForInstructor = coursesResponse.data.filter((course) =>
           enrolledCoursesData.includes(course.id)
         );
-
+ 
         setCourseData(coursesForInstructor);
         setError(null);
       } catch (error) {
@@ -53,14 +53,14 @@ function CoursesCategory(params) {
         setIsLoading(false);
       }
     };
-
+ 
     if (storedStudentId && categoryId) {
       fetchData();
     }
   }, [categoryId, storedStudentId]);
-
+ 
   console.log(courseData);
-
+ 
   return (
     <div className="d-flex">
       {error ? (
@@ -81,5 +81,5 @@ function CoursesCategory(params) {
     </div>
   );
 }
-
+ 
 export default CoursesCategory;
