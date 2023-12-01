@@ -6,7 +6,7 @@ import CourseSyllabus from "./CourseSyllabus";
 import CourseContent from "./CourseContent";
 import Videos from "./Videos.jsx";
 import Urls from "./Urls.jsx";
-
+ 
 function Course() {
   let { id } = useParams();
   return (
@@ -30,7 +30,7 @@ function Course() {
             <div className="progress-bar progressBar-style">25%</div>
           </div>
         </div> */}
-
+ 
       <CourseSyllabus />
       <CourseContent />
       <Videos />
@@ -38,5 +38,5 @@ function Course() {
     </div>
   );
 }
-
+ 
 export default Course;
