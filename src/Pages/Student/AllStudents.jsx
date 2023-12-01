@@ -1,5 +1,3 @@
-
-
 function AllStudents(){
     return(
         <div>
@@ -18,7 +16,7 @@ function AllStudents(){
                 </ul>
               </div>
         </div>
-        
+       
        );
 }
 export default AllStudents;
