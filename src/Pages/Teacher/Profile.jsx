@@ -18,10 +18,10 @@ import {
   MDBBreadcrumbItem,
 } from "mdb-react-ui-kit";
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 export default function Profile() {
   const [instructorData, setInstructorData] = useState([]);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,13 +29,13 @@ export default function Profile() {
           localStorage.getItem("instructorId")
         );
         console.log(storedInstructorId);
-
+ 
         if (storedInstructorId) {
           // Fetch data from API using the ID from local storage
           const response = await axios.get(
             `${baseUrl}/instructor/${storedInstructorId}/`
           );
-
+ 
           // Check if the fetched ID matches the one from local storage
           if (response.data.id == storedInstructorId) {
             setInstructorData([response.data]);
@@ -49,10 +49,10 @@ export default function Profile() {
         console.error("Error fetching instructor data:", error);
       }
     };
-
+ 
     fetchData();
   }, []);
-
+ 
   return (
     <section style={{ backgroundColor: "#eee" }}>
       {instructorData.map((instructor) => (
@@ -73,7 +73,7 @@ export default function Profile() {
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
-
+ 
           <MDBRow>
             <MDBCol lg="4">
               <MDBCard className="mb-4">
