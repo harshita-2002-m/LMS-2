@@ -1,4 +1,3 @@
-// import './Profile.css';
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -18,22 +17,22 @@ import {
   MDBBreadcrumbItem,
 } from "mdb-react-ui-kit";
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 export default function Profile() {
   const [studentData, setStudentData] = useState([]);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const storedStudentId = JSON.parse(localStorage.getItem("studentId"));
         console.log(storedStudentId);
-
+ 
         if (storedStudentId) {
           // Fetch data from API using the ID from local storage
           const response = await axios.get(
             `${baseUrl}/student/${storedStudentId}/`
           );
-
+ 
           // Check if the fetched ID matches the one from local storage
           if (response.data.id == storedStudentId) {
             setStudentData([response.data]);
@@ -47,10 +46,10 @@ export default function Profile() {
         console.error("Error fetching instructor data:", error);
       }
     };
-
+ 
     fetchData();
   }, []);
-
+ 
   return (
     <section style={{ backgroundColor: "#eee" }}>
       {studentData.map((student) => (
@@ -71,7 +70,7 @@ export default function Profile() {
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
-
+ 
           <MDBRow>
             <MDBCol lg="4">
               <MDBCard className="mb-4">
