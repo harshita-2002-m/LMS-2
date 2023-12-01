@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Url from "./url";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function Urls() {
   const { id } = useParams();
   const [urlsData, setUrlsData] = useState([]);
-
+ 
   useEffect(() => {
     // Fetch URLs for a particular course
     axios
@@ -22,7 +22,7 @@ function Urls() {
       });
   }, [id]);
   console.log(urlsData);
-
+ 
   return (
     <div className="container CourseSyllabus">
       <div className="syllabusFaq faqs text-light d-flex justify-content-between align-items-center">
@@ -44,5 +44,5 @@ function Urls() {
     </div>
   );
 }
-
+ 
 export default Urls;
