@@ -2,27 +2,27 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function EnrolledStudents() {
   const [enrollmentData, setEnrollmentData] = useState([]);
   const [studentsData, setStudentsData] = useState([]);
   const { id } = useParams();
-
+ 
   // useEffect(() => {
   //   // Fetch enrollment data for the specific course
   //   const fetchEnrollmentData = async () => {
   //     try {
   //       const response = await axios.get(`${baseUrl}/enrollment/}`);
   //       const enrolledcourse= res.data.filter(enrollment => enrollment.fk_course == id);
-
+ 
   //       setEnrollmentData(enrolledcourse);
   //     } catch (error) {
   //       console.error(error);
   //     }
   //   };
-
+ 
   useEffect(() => {
     const fetchEnrollmentData = async () => {
       try {
@@ -38,14 +38,14 @@ function EnrolledStudents() {
     };
     fetchEnrollmentData();
   }, [id]);
-
+ 
   useEffect(() => {
     // Fetch students data based on enrollment whenever the enrollment data changes
     const fetchStudents = async () => {
       const enrollStudents = enrollmentData.map(
         (enrollment) => enrollment.fk_student
       );
-
+ 
       if (enrollStudents.length > 0) {
         try {
           const studentsResponse = await axios.get(
@@ -57,22 +57,22 @@ function EnrolledStudents() {
         }
       }
     };
-
+ 
     fetchStudents();
   }, [enrollmentData]);
-
+ 
   const handleStudentRemove = async (studentId) => {
     try {
       // Remove the student from the enrollment table
       await axios.delete(`${baseUrl}/enrollment/${studentId}/`);
-
+ 
       // Update the local state to reflect the removal
       setEnrollmentData((prevEnrollments) =>
         prevEnrollments.filter(
           (enrollment) => enrollment.fk_student.id !== studentId
         )
       );
-
+ 
       // Optionally, you can update the studentsData state as well if needed
       // setStudentsData((prevStudents) => prevStudents.filter((student) => student.id !== studentId));
       window.location.reload();
@@ -80,7 +80,7 @@ function EnrolledStudents() {
       console.error("Error removing student:", error);
     }
   };
-
+ 
   return (
     <div>
       <div className="card courseContent-container mb-0">
@@ -90,7 +90,7 @@ function EnrolledStudents() {
             <Link to={`/Teacher/AddStudents/${id}`}>Add Students</Link>
           </button>
         </div>
-
+ 
         {enrollmentData.length === 0 ? (
           <p className="list-group-item text-center">
             No students have been enrolled for this course yet.
@@ -104,7 +104,7 @@ function EnrolledStudents() {
                 const student = studentsData.find(
                   (student) => student.id === enrollment.fk_student
                 );
-
+ 
                 return (
                   <li
                     key={enrollment.id}
@@ -133,5 +133,5 @@ function EnrolledStudents() {
     </div>
   );
 }
-
+ 
 export default EnrolledStudents;
