@@ -1,20 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from "../../Login/Login";
 import { useNavigate } from "react-router-dom";
-
+ 
 function Header() {
   const navigate = useNavigate();
   function logOut(event) {
     event.preventDefault(); // Prevent the default link behavior
-
+ 
     // Clear user data from local storage
     localStorage.removeItem("userType");
-
+ 
     // Redirect to the login page
-    navigate("/");
+    navigate("/Login");
   }
-
+ 
   return (
     <nav className="navbar navbar-expand-lg navbar nav-bg">
       <div className="container">
@@ -64,5 +63,5 @@ function Header() {
     </nav>
   );
 }
-
+ 
 export default Header;
