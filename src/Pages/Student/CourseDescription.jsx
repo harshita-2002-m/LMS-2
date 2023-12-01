@@ -74,7 +74,7 @@ function CourseDescription(props) {
               <p className="fw-bold">
                 Created By :
                 <a
-                  href="/Student/TeacherProfile"
+                  href="#"
                   className="text-decoration-none text-dark"
                 >
                   {getInstructorName(course.fk_instructor)}
