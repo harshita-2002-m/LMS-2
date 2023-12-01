@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Pdf from "./Pdf"; // Assuming you have a Pdf component for rendering PDFs
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function CourseContent() {
   const { id } = useParams();
   const [pdfData, setPdfData] = useState([]);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,19 +16,19 @@ function CourseContent() {
         const content = response.data.filter(
           (content) => content.fk_course == id
         );
-
+ 
         setPdfData(content);
         console.log("PDF Content : ", content);
       } catch (error) {
         console.error(error);
       }
     };
-
+ 
     fetchData();
   }, [id]);
-
+ 
   console.log("Current PdfData:", pdfData);
-
+ 
   return (
     <div className="container CourseSyllabus">
       <div className="syllabusFaq faqs text-light d-flex justify-content-between align-items-center">
@@ -47,5 +47,5 @@ function CourseContent() {
     </div>
   );
 }
-
+ 
 export default CourseContent;
