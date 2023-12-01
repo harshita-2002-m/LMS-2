@@ -1,14 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
- 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-[1:02 PM] Palak Gupta
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Quizzes from "../Student/Quizes";
  
 const baseUrl = "https://danville.pythonanywhere.com/api";
  
@@ -51,13 +43,13 @@ function Quiz(props) {
   };
  
   return (
-    <div className="quizcontainer">
+    <div className="quizes">
       <li className={`list-group-item ${status === 0 ? "disabled-quiz" : ""}`}>
         <a href={props.link} target="_blank" rel="noreferrer">
           {props.title}
         </a>
         <button
-          className="buttn btn-sm float-end text-white"
+          className="buttn btn-sm float-end text-white quizbtn"
           onClick={handleDisable}
         >
           {status === 0 ? "Enable" : "Disable"}
@@ -96,4 +88,3 @@ export default Quiz;
 //   );
 // }
 // export default Quiz;
- 
