@@ -10,9 +10,9 @@ import Urls from "./Urls.jsx";
 function Course() {
   let { id } = useParams();
   return (
-    <div>
-      <div classNameName="container">
-        <div classNameName="row">
+    <div className="marginprop">
+      <div classNameName="container col-md-4">
+         
           <div classNameName="col-md-4">
             <div className="d-flex">
               <CourseDescription
@@ -23,14 +23,8 @@ function Course() {
               />
             </div>
           </div>
-        </div>
+        
       </div>
-      {/* <div className = "container progressContainer">
-          <div className="progress progress-width bg-dark" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            <div className="progress-bar progressBar-style">25%</div>
-          </div>
-        </div> */}
- 
       <CourseSyllabus />
       <CourseContent />
       <Videos />
@@ -38,5 +32,5 @@ function Course() {
     </div>
   );
 }
- 
+
 export default Course;
