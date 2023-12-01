@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Quiz from "./Quiz";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function Quizzes() {
   const { id } = useParams();
   const [quizzesData, setQuizzesData] = useState([]);
-
+ 
   useEffect(() => {
     // Fetch quizzes for a particular course
     axios
@@ -21,9 +21,9 @@ function Quizzes() {
         console.error(error);
       });
   }, [id]);
-
+ 
   return (
-    <div className="container CourseSyllabus">
+    <div className="container CourseSyllabus quizcontainer">
       <div className="syllabusFaq faqs text-light d-flex justify-content-between align-items-center">
         <span>Quizzes</span>
         {/* <button className="bg-white text-dark" type="button">
@@ -45,5 +45,5 @@ function Quizzes() {
     </div>
   );
 }
-
+ 
 export default Quizzes;
