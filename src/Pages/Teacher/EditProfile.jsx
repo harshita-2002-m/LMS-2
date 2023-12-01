@@ -20,7 +20,7 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 export default function EditProfile() {
   const [instructorData, setInstructorData] = useState([]);
   const [formData, setFormData] = useState({
@@ -32,10 +32,10 @@ export default function EditProfile() {
     dob: "",
     address: "",
   });
-
+ 
   const [enrollmentAdded, setEnrollmentAdded] = useState(false);
   const [error, setError] = useState(null); // State variable for error message
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,12 +43,12 @@ export default function EditProfile() {
           localStorage.getItem("instructorId")
         );
         console.log(storedInstructorId);
-
+ 
         if (storedInstructorId && !enrollmentAdded) {
           const response = await axios.get(
             `${baseUrl}/instructor/${storedInstructorId}/`
           );
-
+ 
           if (response.data.id === storedInstructorId) {
             setInstructorData([response.data]);
             setFormData({
@@ -72,10 +72,10 @@ export default function EditProfile() {
         console.error("Error fetching instructor data:", error);
       }
     };
-
+ 
     fetchData();
   }, [enrollmentAdded]);
-
+ 
   const handleInputChange = (e) => {
     if (e.target.id === "profilePicture") {
       setFormData({
@@ -89,7 +89,7 @@ export default function EditProfile() {
       });
     }
   };
-
+ 
   const handleSaveChanges = async () => {
     try {
       const storedInstructorId = JSON.parse(
@@ -103,11 +103,11 @@ export default function EditProfile() {
         form.append("contactNumber", formData.contactNumber);
         form.append("dob", formData.dob);
         form.append("address", formData.address);
-
+ 
         if (formData.profilePicture instanceof File) {
           form.append("profilePicture", formData.profilePicture);
         }
-
+ 
         const res = await axios.put(
           `${baseUrl}/instructor/${storedInstructorId}/`,
           form,
@@ -117,14 +117,14 @@ export default function EditProfile() {
             },
           }
         );
-
+ 
         setFormData({
           ...formData,
           profilePicture: res.data.profilePicture,
         });
-
+ 
         console.log("Instructor data updated successfully");
-
+ 
         // Check if the same student ID is present in the enrollment table
         if (res.data.error) {
           setError(res.data.error);
@@ -139,7 +139,7 @@ export default function EditProfile() {
       console.error("Error updating instructor data:", error);
     }
   };
-
+ 
   return (
     <section style={{ backgroundColor: "#eee" }}>
       {instructorData.map((instructor) => (
@@ -157,9 +157,9 @@ export default function EditProfile() {
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
-
+ 
           <MDBRow>
-            <MDBCol lg="4">
+            <MDBCol lg="3" className="editprofileDiv">
               <MDBCard className="mb-4">
                 <MDBCardBody className="text-center">
                   <MDBCardImage
@@ -169,7 +169,7 @@ export default function EditProfile() {
                     style={{ width: "150px" }}
                     fluid
                   />
-
+ 
                   <div className="d-flex justify-content-center mb-2"></div>
                   <div class="media-body ml-4">
                     <label class="form-label" for="customFile">
@@ -185,7 +185,7 @@ export default function EditProfile() {
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>
-
+ 
             <MDBCol lg="8">
               <MDBCard className="mb-4" style={{ width: "100%" }}>
                 <MDBCardBody>
@@ -243,7 +243,7 @@ export default function EditProfile() {
                     </MDBCol>
                   </MDBRow>
                   <hr />
-
+ 
                   <MDBRow>
                     <MDBCol sm="3">
                       <MDBCardText>Phone</MDBCardText>
@@ -300,11 +300,11 @@ export default function EditProfile() {
                   </MDBRow>
                 </MDBCardBody>
               </MDBCard>
-
+ 
               <MDBRow>
                 <MDBRow>
                   <MDBCol>
-                    <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
+                    <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4 savechangediv">
                       <MDBBreadcrumbItem>
                         <button
                           type="button"
