@@ -13,13 +13,13 @@ const QuizDashboard = () => {
           <div className="col-md-6">
             <div className="d-flex">
               <div className="card courseDashboardCard">
-                
+               
                   <img
                     src="https://source.unsplash.com/1800x1800/?course&1"
                     className="card-img-top"
                     alt="#"
                   />
-                
+               
                 <div className="card-body">
                   <h5 className="card-title">
                     <Link to={`/Teacher/NewQuiz/${id}`} className="buttn btn-primary btn-color">
@@ -32,13 +32,13 @@ const QuizDashboard = () => {
           </div>
           <div className="col-md-6">
             <div className="card courseDashboardCard">
-              
+             
                 <img
                   src="https://source.unsplash.com/1800x1800/?course&2"
                   className="card-img-top"
                   alt="..."
                 />
-              
+             
               <div className="card-body">
                 <h5 className="card-title">
                 <Link to={`/Teacher/Quizes/${id}`} className="buttn btn-primary btn-color">
@@ -53,5 +53,5 @@ const QuizDashboard = () => {
     </div>
   );
 };
-
+ 
 export default QuizDashboard;
