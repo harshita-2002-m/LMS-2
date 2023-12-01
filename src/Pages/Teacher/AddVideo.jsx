@@ -1,43 +1,43 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function AddVideo() {
   let { id } = useParams();
   console.log({ id });
-
+ 
   const [videoData, setVideoData] = useState({
     videoTitle: "",
     videos: null,
     fk_course: id,
   });
-
+ 
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+ 
   const handleChange = (event) => {
     setVideoData({
       ...videoData,
       [event.target.name]: event.target.value,
     });
   };
-
+ 
   const handleFileChange = (event) => {
     setVideoData({
       ...videoData,
       [event.target.name]: event.target.files[0],
     });
   };
-
+ 
   const submitForm = (event) => {
     event.preventDefault();
     const contentFormData = new FormData();
     contentFormData.append("videoTitle", videoData.videoTitle);
     contentFormData.append("videos", videoData.videos);
     contentFormData.append("fk_course", videoData.fk_course);
-
+ 
     axios
       .post(baseUrl + "/videos/", contentFormData, {
         headers: {
@@ -55,7 +55,7 @@ function AddVideo() {
         console.error(error);
       });
   };
-
+ 
   return (
     <div className="formcontainer videoQuizContainer">
       {successMessage && <p className="text-success">{successMessage}</p>}
@@ -73,7 +73,7 @@ function AddVideo() {
             required
           />
         </div>
-
+ 
         <div className="form-group">
           <label htmlFor="file">Video:</label>
           <br />
@@ -94,5 +94,5 @@ function AddVideo() {
     </div>
   );
 }
-
+ 
 export default AddVideo;
