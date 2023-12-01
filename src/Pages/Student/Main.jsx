@@ -2,7 +2,6 @@ import React from "react";
 import { Routes as Switch, Route } from "react-router-dom";
 //import {useNavigate} from 'react-router-dom';
 import Home from "./Home";
-// import Login from "../Login/Login";
 import Login from "../../Login/Login";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -41,7 +40,7 @@ function Main() {
                 <Route path="/EditProfile" element={<EditProfile />} />
                 <Route path="/ChatPage" element={<ChatPage />} />
                 <Route path="/TeacherProfile" element={<TeacherProfile />} />          
-
+ 
                 {/* Add other routes for students here */}
                 <Route path="*" element={<NotFound />} />
                 <Route path="/Login" element={<Login/>} />
@@ -50,15 +49,15 @@ function Main() {
                 <Route path="/OngoingCourse" element={<OngoingCourse />} />
                 <Route path="/CompletedCourse" element={<CompletedCourse />} />
                 <Route path="/Quizes/:id" element={<Quizzes />} />
-                
+               
             </Switch>
             <Footer />
         </div>
     );
 }
-
+ 
 function NotFound() {
     return <div>Page Not Found</div>;
 }
-
+ 
 export default Main;
