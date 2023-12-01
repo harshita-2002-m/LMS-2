@@ -1,7 +1,7 @@
 // import { Link } from 'react-router-dom';
-
+ 
 import React from "react";
-
+ 
 const CourseDashboard = () => {
   return (
     <div>
@@ -78,5 +78,5 @@ const CourseDashboard = () => {
     </div>
   );
 };
-
+ 
 export default CourseDashboard;
