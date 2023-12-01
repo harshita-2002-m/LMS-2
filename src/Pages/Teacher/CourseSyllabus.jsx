@@ -1,68 +1,80 @@
 import React, { useState, useEffect } from "react";
 //import Syllabus from "./Syllabus";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
+import { useParams, Link } from "react-router-dom";
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 export default function CourseSyllabus() {
+  //const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
+ 
+  const [syllabusId, setSyllabusId] = useState(null);
   const [syllabus, setSyllabus] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedDescription, setEditedDescription] = useState("");
-
+  const [hasSyllabus, setHasSyllabus] = useState(false);
+ 
   useEffect(() => {
     axios
       .get(`${baseUrl}/get-syllabus/${id}/`)
       .then((res) => {
-        setSyllabus(res.data.syllabus);
+        const { syllabus_id, syllabus } = res.data;
+        setSyllabus(syllabus);
+        setSyllabusId(Number(syllabus_id));
+        console.log("Syllabus D  :" + syllabus_id);
         setLoading(false);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
+ 
+    // Check if syllabus exists for the specified course
+    axios
+      .get(`${baseUrl}/has-syllabus/${id}/`)
+      .then((res) => {
+        setHasSyllabus(res.data.hasSyllabus);
+      })
+      .catch((error) => {
+        console.error("Error checking syllabus:", error);
+      });
   }, [id]);
-
-  const handleEditClick = () => {
+  console.log("syllabus id", syllabusId);
+ 
+  const handleEditClick = (syllabusId, existingDescription) => {
     // Set the initial value of editedDescription to the existing description
-    const existingDescription = syllabus[0] ? syllabus[0].descriptions : "";
+    setSyllabusId(syllabusId);
     setEditedDescription(existingDescription);
     setEditMode(true);
   };
-
+ 
   const handleSaveClick = async () => {
     try {
-      const response = await axios.put(`${baseUrl}/update-syllabus/${id}/`, {
+      // Update the existing record in the database with the new description
+      await axios.put(`${baseUrl}/update-syllabus/${syllabusId}/`, {
         descriptions: editedDescription,
       });
-
-      if (response.status === 200) {
-        setSyllabus((prevSyllabus) =>
-          prevSyllabus.map((item) => ({
-            ...item,
-            descriptions: editedDescription,
-          }))
-        );
-        setEditMode(false);
-      } else {
-        console.error("Error updating syllabus. Status:", response.status);
-      }
-    } catch (error) {
-      console.error(
-        "Error updating syllabus:",
-        error.response?.data?.error || error.message
+ 
+      // After saving, update the local state and exit edit mode
+      setSyllabus((prevSyllabus) =>
+        prevSyllabus.map((item) => ({
+          ...item,
+          descriptions: editedDescription,
+        }))
       );
+      setEditMode(false);
+    } catch (error) {
+      console.error("Error updating syllabus:", error);
     }
   };
-
+ 
   if (loading) {
     return <div>Loading...</div>;
   }
-
+ 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
@@ -70,13 +82,26 @@ export default function CourseSyllabus() {
     <div className="container CourseSyllabus">
       <div className="syllabusFaq faqs text-light d-flex justify-content-between align-items-center">
         <span>SYLLABUS</span>
-        <button
-          className="bg-white text-dark"
-          type="button"
-          onClick={handleEditClick}
-        >
-          Edit
-        </button>
+        {syllabus.map((item, index) => (
+          <button
+            key={index}
+            className="bg-white text-dark"
+            type="button"
+            onClick={() => handleEditClick(item.id, item.descriptions)}
+          >
+            Edit
+          </button>
+        ))}
+        {!hasSyllabus && (
+          <button>
+            <Link
+              to={`/Teacher/AddSyllabus/${id}`}
+              className="buttn bg-white text-dark"
+            >
+              Add
+            </Link>
+          </button>
+        )}
       </div>
       <div className="col-8 courseDes-text">
         {syllabus.map((item, index) => (
@@ -86,12 +111,12 @@ export default function CourseSyllabus() {
               <textarea
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
-                rows={5} // Set the number of rows
+                rows={5}
                 cols={50}
-                style={{ width: "178%" }} // Set the number of columns
+                style={{ width: "178%" }}
               />
             ) : (
-              <p className="">{item.descriptions}</p>
+              <p>{item.descriptions}</p>
             )}
             {editMode && (
               <button
