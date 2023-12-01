@@ -308,10 +308,10 @@ export default function EditProfile() {
                       <MDBBreadcrumbItem>
                         <button
                           type="button"
-                          class="btn btn-primary"
+                          class="btn btn-primary savebtn"
                           onClick={handleSaveChanges}
                         >
-                          Save Changes
+                          Save
                         </button>
                       </MDBBreadcrumbItem>
                     </MDBBreadcrumb>
