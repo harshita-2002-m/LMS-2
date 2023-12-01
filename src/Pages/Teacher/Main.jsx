@@ -88,7 +88,7 @@ import Footer from "./Footer";
 import AddPDF from "./AddPDF";
 import AddUrls from "./AddUrls";
 import Video from "./Video";
-import ResetPassword from "./ResetPassword 1";
+import ResetPassword from "./ResetPassword";
 import OngoingCourse from "../Teacher/OngoingCourse";
 import CompletedCourse from "../Teacher/CompletedCourse";
 import Quizes from "./Quizes";
