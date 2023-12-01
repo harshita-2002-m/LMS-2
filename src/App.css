@@ -568,3 +568,22 @@ buttn:hover {
 .coursedashboardcardplus {
   height: 55px;
 }
+
+/* ---Hover Property----------- */
+.card-text.description-hidden {
+  display: none;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading-margin{
+  margin-top: 45px;
+}
