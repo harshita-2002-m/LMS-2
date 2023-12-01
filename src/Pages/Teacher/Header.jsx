@@ -1,24 +1,28 @@
 import Main from "./Main";
 import { Link } from "react-router-dom";
-import Login from "../../Login/Login";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 function Header() {
   const navigate = useNavigate();
  function logOut(event) {
   event.preventDefault();
-
+ 
   console.log("Logging out...");
   console.log("Local Storage before logout:", localStorage);
   localStorage.clear();
-
-
+ 
+ 
   console.log("Local Storage after logout:", localStorage);
   Cookies.remove("csrftoken");
   console.log("Cookies after logout:", document.cookie);
-  navigate("/");
-  // window.location.reload(); 
+  navigate("/Login");
+  window.location.reload();
 }
+ 
+ 
+ 
+ 
+ 
   return (
     <nav className="navbar navbar-expand-lg navbar nav-bg">
       <div className="container">
@@ -71,5 +75,5 @@ function Header() {
     </nav>
   );
 }
-
+ 
 export default Header;
