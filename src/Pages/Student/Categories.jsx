@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
 // const baseUrl = "http://127.0.0.1:8000/api";
-
+ 
 const Categories = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [categoryData, setcategoryData] = useState([]);
-
+ 
   useEffect(() => {
     try {
       axios.get(baseUrl + "/category/").then((res) => {
@@ -18,16 +18,16 @@ const Categories = () => {
       console.log(error);
     }
   }, []);
-
+ 
   //const categories = [{ id: 1, name: "" }];
-
+ 
   const handleSearch = () => {
     if (!searchTerm.trim()) {
       // Display a pop-up message when the search term is empty or only contains whitespace
       alert("Item not valid");
       return;
     }
-
+ 
     // Check if the entered text matches any of the category names
     if (
       !categoryData.some(
@@ -39,14 +39,14 @@ const Categories = () => {
       alert("Category is not found");
       return;
     }
-
+ 
     const filtered = categoryData.filter((category) =>
       category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+ 
     setFilteredCategories(filtered);
   };
-
+ 
   return (
     <div className="container mt-4">
       <div className="row">
@@ -60,7 +60,7 @@ const Categories = () => {
               style={{ width: "850px" }}
             />
           </div>
-
+ 
           <div className="search-button">
             <button onClick={handleSearch} className="btn btn-primary">
               Search
@@ -68,7 +68,7 @@ const Categories = () => {
           </div>
         </div>
       </div>
-
+ 
       <div className="row">
         <div className="col-md-15">
           <div className="d-flex flex-wrap">
@@ -85,7 +85,7 @@ const Categories = () => {
                         alt="#"
                       />
                     </a>
-
+ 
                     <div className="card-body">
                       <h5 className="card-title">
                         <a
@@ -110,7 +110,7 @@ const Categories = () => {
                         alt="#"
                       />
                     </a>
-
+ 
                     <div className="card-body">
                       <h5 className="card-title">
                         <a
@@ -129,5 +129,5 @@ const Categories = () => {
     </div>
   );
 };
-
+ 
 export default Categories;
