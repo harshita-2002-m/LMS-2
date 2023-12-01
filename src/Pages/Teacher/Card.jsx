@@ -53,7 +53,7 @@ function Card(props) {
     >
       <img src={props.img} className="card-img-top" alt="..." />
       <div className="card-body">
-        <h5 className="card-title">{props.title}</h5>
+        <h5 className="card-title marginprop">{props.title}</h5>
         {/* Show description only when not hovered */}
         {!isHovered && (
           <p className="card-text description-hidden">{truncateDescription(props.desc)}</p>
