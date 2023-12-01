@@ -83,7 +83,7 @@ function EnrolledStudents() {
  
   return (
     <div>
-      <div className="card courseContent-container mb-0">
+      <div className="card courseContent-container mb-0 enrolledstudentsdiv">
         <div className="card-header class-header-style text-white">
           ENROLLED STUDENTS
           <button className="bttn btn-sm float-end bg-white text-dark fixed-size">
