@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
-
+ 
 const baseUrl = "https://danville.pythonanywhere.com/api";
-
+ 
 function CompletedCourse() {
   const [courseData, setCourseData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -11,15 +11,15 @@ function CompletedCourse() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+ 
   useEffect(() => {
     // Fetching instructor id from local storage
     const storedInstructorId = localStorage.getItem("instructorId");
     console.log(storedInstructorId);
-
+ 
     if (storedInstructorId) {
       setInstructorId(storedInstructorId);
-
+ 
       axios
         .get(baseUrl + "/course/")
         .then((res) => {
@@ -42,18 +42,18 @@ function CompletedCourse() {
         });
     }
   }, []);
-
+ 
   const handleSearch = () => {
     if (!searchTerm.trim()) {
       setError("Search term is empty or contains only whitespace.");
       setFilteredData(courseData); // Restore ongoing courses
       return;
     }
-
+ 
     const filtered = courseData.filter((course) =>
       course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+ 
     if (filtered.length === 0) {
       setError("No courses found.");
     } else {
@@ -61,15 +61,15 @@ function CompletedCourse() {
       setFilteredData(filtered);
     }
   };
-
+ 
   if (loading) {
     return <div>Loading...</div>;
   }
-
+ 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
+ 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -110,5 +110,5 @@ function CompletedCourse() {
     </div>
   );
 }
-
+ 
 export default CompletedCourse;
