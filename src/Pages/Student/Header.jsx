@@ -11,7 +11,7 @@ function Header() {
     localStorage.removeItem("userType");
  
     // Redirect to the login page
-    navigate("/Login");
+    navigate("/");
   }
  
   return (
