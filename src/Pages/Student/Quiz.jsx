@@ -4,7 +4,7 @@ function Quiz(props) {
         <a href={props.link} target="_blank" rel="noreferrer">
           {props.title}
         </a>
-  
+ 
         {/* <button
           className="DeleteVideo btn btn-sm float-end text-white"
           onClick={props.onDelete}
@@ -25,4 +25,3 @@ function Quiz(props) {
     );
   }
   export default Quiz;
-  
