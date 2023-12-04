@@ -715,3 +715,8 @@ h2 {
   height: 95px;
   overflow: auto;
 }
+
+.searchbtn{
+  height: 50px;
+  width: 100px;
+}
