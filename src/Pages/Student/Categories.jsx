@@ -24,7 +24,7 @@ const Categories = () => {
   const handleSearch = () => {
     if (!searchTerm.trim()) {
       // Display a pop-up message when the search term is empty or only contains whitespace
-      alert("Item not valid");
+      alert("Enter a valid category");
       return;
     }
  
@@ -50,8 +50,8 @@ const Categories = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        <div className="col-md-12 d-flex flex-wrap">
-          <div className="search-bar">
+        <div className="col-md-12 d-flex flex-wrap" style={{marginTop: "30px" }}>
+          <div className="search-bar " >
             <input
               type="text"
               placeholder="Search Category"
@@ -61,8 +61,8 @@ const Categories = () => {
             />
           </div>
  
-          <div className="search-button">
-            <button onClick={handleSearch} className="btn btn-primary">
+          <div>
+            <button onClick={handleSearch} className="btn btn-primary searchbtn">
               Search
             </button>
           </div>
