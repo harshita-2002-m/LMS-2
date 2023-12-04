@@ -91,7 +91,7 @@ function CourseContent() {
             to={`/Teacher/AddPDF/${id}`}
             className="text-decoration-none text-dark"
           >
-            Add Pdf
+            Add PDF
           </Link>
         </button>
       </div>

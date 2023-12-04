@@ -4,7 +4,7 @@ function Home() {
     <div>
       <Hero />
       <div className="container mt-4">
-        <h3 className="pb-1 mb-4">Teacher Dashboard</h3>
+        {/* <h3 className="pb-1 mb-4">Teacher Dashboard</h3> */}
         <div className="row">
           <div className="col-md-6">
             <div className="d-flex">

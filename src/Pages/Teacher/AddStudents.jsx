@@ -53,7 +53,7 @@ function AddStudents() {
   };
  
   return (
-    <div className="formcontainer">
+    <div className="formcontainer margin">
       <div>
         <h1>Select Students</h1>
         <Multiselect
@@ -62,7 +62,7 @@ function AddStudents() {
           onSelect={(selectedList) => setSelectedStudents(selectedList)}
           onRemove={(selectedList) => setSelectedStudents(selectedList)}
         />
-        <button onClick={handleAddStudents}>Add Students</button>
+        <button className= "addstudentbtn" onClick={handleAddStudents}>Add Students</button>
         {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
       </div>
     </div>

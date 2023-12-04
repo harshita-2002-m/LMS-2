@@ -3,7 +3,7 @@ function Hero() {
         <div className="hero-container">
             <div className="hero">
                 <div className="hero-text">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui quia quis molestiae, necessitatibus aperiam tempore, facilis possimus doloremque obcaecati ut ipsum! Eos qui, adipisci consequatur accusamus ratione delectus quisquam quo.</p>
+                    <p> Learning Management System (LMS) is an educational software that streamlines the administration, delivery of courses. It empowers educators to create, manage, and assess content, while enabling students to access materials, submit assignments, and engage in online learning, fostering a seamless and efficient learning experience.</p>
                 </div>
                 <div className="hero-img-container">
                     <img src="https://source.unsplash.com/1800x900/?classroom" className="hero-img" alt="" />

@@ -6,7 +6,7 @@ const CourseDashboard = () => {
   return (
     <div>
       <div className="container mt-4">
-        <h3 className="pb-1 mb-4">Course Panel</h3>
+        {/* <h3 className="pb-1 mb-4">Course Panel</h3> */}
         <div className="row md-4 CourseDash-Card">
           <div className="col-md-4">
             <div className="d-flex">
@@ -33,7 +33,7 @@ const CourseDashboard = () => {
           </div>
           <div className="col-md-4">
             <div className="card courseDashboardCard">
-              <a href="/Teacher/CourseList">
+              <a href="/Teacher/OngoingCourse">
                 <img
                   src="https://source.unsplash.com/1800x1800/?course&2"
                   className="card-img-top"
@@ -54,7 +54,7 @@ const CourseDashboard = () => {
           </div>
           <div className="col-md-4">
             <div className="card courseDashboardCard">
-              <a href="/Teacher/CourseList">
+              <a href="/Teacher/CompletedCourse">
                 <img
                   src="https://source.unsplash.com/1800x1800/?course&3"
                   className="card-img-top"

@@ -24,7 +24,7 @@ function Urls() {
   console.log(urlsData);
  
   return (
-    <div className="container CourseSyllabus">
+    <div className="container CourseSyllabus urldiv">
       <div className="syllabusFaq faqs text-light d-flex justify-content-between align-items-center">
         <span>URLs</span>
         <button className="bg-white text-dark" type="button">

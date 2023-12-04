@@ -134,6 +134,11 @@ h4 {
   margin-left: 20px;
   margin-top: 20px;
 }
+
+.syllabuscontainer{
+  width:100%;
+  padding:15px;
+}
  
 .courseDes-img {
   width: 100%;
@@ -281,6 +286,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ 
 }
  
 .form-group {
@@ -496,19 +502,21 @@ h2 {
   background-color: #223843;
   border: none;
   color: rgb(255, 255, 255);
-  padding: 15px 15px;
+  padding: 10px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
   border-radius: 4px;
   white-space: nowrap;
+  margin-left: -10px;
+  
 }
-buttn:hover {
+/* buttn:hover {
   background-color: #d77a61;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
+} */
  
 .bttn {
   background-color: #223843;
@@ -617,9 +625,9 @@ buttn:hover {
 }
  
 .enrolledstudentsdiv {
-  margin-top: 40px;
-  margin-bottom: 60px !important;
-  width: 1100px;
+  margin-top: 70px;
+  margin-bottom: 150px !important;
+  width: 1400px;
 }
 
 
@@ -634,4 +642,76 @@ buttn:hover {
 .quizbtn {
   margin-top: -8px;
   height: 40px !important;
+}
+
+
+
+/* -------- */
+
+.disablebtn{
+  margin-top: 10px;
+  padding: auto;
+  width: 120px;
+  height: 40px;
+  margin-left: 35px;
+}
+
+/* ------- */
+.urldiv{
+  margin-bottom: 40px;
+}
+
+
+.syllabuseditbtn{
+  /* margin-left: 900px; */
+  font-size: 15px;
+  border-radius: 4px;
+  /* white-space: nowrap; */
+}
+
+
+
+/* -----------------search-bar */
+.search-bar {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px 5px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.margin{
+  margin-top: 70px;
+  margin-bottom: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.addstudentbtn{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.descriptionheight{
+  margin: auto auto 20px auto;
+  height: 95px;
+  overflow: auto;
 }
