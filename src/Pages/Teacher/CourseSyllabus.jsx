@@ -115,7 +115,7 @@ export default function CourseSyllabus() {
                 onChange={(e) => setEditedDescription(e.target.value)}
                 rows={5}
                 cols={50}
-                style={{ width: "178%" }}
+                style={{ width: "100%" }}
               />
             ) : (
               <p>{item.descriptions}</p>
