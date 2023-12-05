@@ -69,7 +69,7 @@ function CourseDescription(props) {
           {courseData.map((course) => (
             <div key={course.id}>
               <h3>{course.courseName}</h3>
-              <p style={{ width: "80%" }}>{course.description}</p>
+              <p className="descriptionheight">{course.description}</p>
  
               <p className="fw-bold">
                 Created By :
