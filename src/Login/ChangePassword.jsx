@@ -51,7 +51,7 @@ function ChangePassword() {
  
       // Wait for a few seconds before navigating
       setTimeout(() => {
-        navigate("/Login");
+        navigate("/");
       }, 2000); // Navigate after 3 seconds (adjust as needed)
     } catch (error) {
       console.log(error);
